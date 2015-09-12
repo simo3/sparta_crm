@@ -8,8 +8,8 @@ class CreateCustomers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    #
-#検索されやすいように目次を設定
+    #create_tableが終わったら
+    #検索されやすいように目次を設定
   add_index :customers, :email, unique: true
   end
 
