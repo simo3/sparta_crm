@@ -23,6 +23,11 @@
   <%= f.text_field :email, class: 'form-control' %>
 </div>
 <div class="form-group">
+  <%= f.label :company_id %>
+  <!--()の中はプロパティ名, オブジェクトの配列, (HTMLタグ内の)value属性の項目, (セレクターに表示される)テキストの項目-->
+  <%= f.collection_select(:company_id, Company.all, :id, :company_name) %>
+</div>
+<div class="form-group">
 <%= f.submit 'Reigister' %>
 </div>
 <% end %>

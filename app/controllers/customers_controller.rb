@@ -1,10 +1,16 @@
 class CustomersController < ApplicationController
+  before_action :search_customer, only:[:show, :edit, :update, :destroy]
   def index
-    @customers = Customer.page(params[:page])
+    #@customers = Customer.page(params[:page])
+    #下記がransackの導入
+    #Customerからransackが引っ張ってきたデータをインスタンス変数qに代入
+    @q = Customer.ransack(params[:q])
+    #ransackのみなら@q.resultでOK
+    #Kaminariが入っているとpage(params[:page]でKaminariに渡す)
+    @customers = @q.result.page(params[:page])
   end
 
   def show
-    @customer = Customer.find(params[:id])
   end
 
   def create
@@ -27,11 +33,9 @@ class CustomersController < ApplicationController
 
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     @customer.update_attributes(customer_params)
     if @customer.save
       redirect_to customers_url(@customer)
@@ -41,7 +45,6 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
     @customer.destroy
     #customers_urlはindexに戻るの意味
     #単数形のcustomer_urlにすると自分自身のshowメソッドに飛ぶ。
@@ -49,6 +52,9 @@ class CustomersController < ApplicationController
   end
 
 private
+  def search_customer
+    @customer = Customer.find(params[:id])
+  end
   def customer_params
     params.require(:customer).permit(
       :family_name,
