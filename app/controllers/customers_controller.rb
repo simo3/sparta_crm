@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   def index
+    @customers = Customer.all
   end
 
   def show
@@ -42,6 +43,8 @@ class CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
+    #customers_urlはindexに戻るの意味
+    #単数形のcustomer_urlにすると自分自身のshowメソッドに飛ぶ。
     redirect_to customers_url
   end
 
