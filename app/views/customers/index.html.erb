@@ -50,9 +50,10 @@
     <% end -%>
 <table class="table table-striped">
   <thead>
+<!--下記の埋め込みはransackのソート機能-->
     <th><%= sort_link(@q, :family_name, '姓') %></th>
     <th><%= sort_link(@q, :given_name, '名') %></th>
-    <th>電子メール</th>
+    <th><%= sort_link(@q, :email, '電子メール') %></th>
     <th><%= sort_link(@q, :company_company_name, '会社名') %></th>
     <th>リンク</th>
   </thead>

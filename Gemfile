@@ -6,6 +6,7 @@ gem 'rails', '4.2.1'
 
 gem 'kaminari'
 gem 'ransack'
+gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -44,7 +45,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
+#以下はdevelop環境のみなのでgroup :developmentに書き込む
   gem 'faker'
   gem 'faker-japanese'
 end

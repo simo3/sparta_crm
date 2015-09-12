@@ -1,4 +1,7 @@
 class CustomersController < ApplicationController
+#以下の一文で、ログインしないとcustomersのindexやshowなどにアクセスできないようにするdeviseのメソッド。
+#authenticated_****で****部分はdeviseで作ったモデル名になる。今回はUserで作ったのでauthenticate_user!になる。
+  before_action :authenticate_user!
   before_action :search_customer, only:[:show, :edit, :update, :destroy]
   def index
     #@customers = Customer.page(params[:page])
