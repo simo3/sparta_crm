@@ -1,4 +1,25 @@
+# == Schema Information
+#
+# Table name: customers
+#
+#  id          :integer          not null, primary key
+#  family_name :string           not null
+#  given_name  :string           not null
+#  email       :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  company_id  :integer
+#
+# Indexes
+#
+#  index_customers_on_company_id  (company_id)
+#  index_customers_on_email       (email) UNIQUE
+#
+
 class Customer < ActiveRecord::Base
+#以下で、company id順に表示する指示
+#:company_id順に並び変えるという:company_orderをコントローラーで呼び出す
+  scope :company_order, -> {order(:company_id)}
   #アソシエーション設定
   #Customerは一つのCompanyに所属する
   belongs_to :company

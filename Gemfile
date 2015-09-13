@@ -3,9 +3,15 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+#全環境で実装する機能については以下に記述しておく。
+#ここに記述した後は、Terminalでbundle install実行。
+#
 
+#kaminariはページインデントを表示させるgem
 gem 'kaminari'
+#ransackは検索やソートを実装するgem
 gem 'ransack'
+#認証機能を実装
 gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -48,5 +54,8 @@ group :development, :test do
 #以下はdevelop環境のみなのでgroup :developmentに書き込む
   gem 'faker'
   gem 'faker-japanese'
+  gem 'annotate'
+#ターミナルで「rails g annotate:install」する
+#「rake annotate_models」するとmodels/*****.rbの先頭にModelの内容が差し込まれる
 end
 
