@@ -6,7 +6,7 @@ gem 'rails', '4.2.1'
 #全環境で実装する機能については以下に記述しておく。
 #ここに記述した後は、Terminalでbundle install実行。
 #
-gem 'MySql2'
+
 #kaminariはページインデントを表示させるgem
 gem 'kaminari'
 #ransackは検索やソートを実装するgem
