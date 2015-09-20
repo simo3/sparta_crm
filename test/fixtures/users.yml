@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  family_name            :string
 #  gien_name              :string
+#  img_url                :string
 #
 # Indexes
 #

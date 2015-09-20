@@ -1,4 +1,4 @@
-<!--<h1>顧客情報一覧</h1>
+<h1>顧客情報一覧</h1>
 <p>お客様情報が表示されます。</p>
 
 <%= search_form_for @q do |f| %>
@@ -13,6 +13,9 @@
 <div class="row">
   <div class="col-lg-12">
     <h1>顧客情報一覧</h1>
+<!--現在ログインしているユーザーを表示するcurrent_user-->
+    <%= current_user.email %>
+    <%= image_tag current_user.img_url, width: '100px' %>
     <p>お客様情報が表示されます。</p>
 
     <%= search_form_for @q do |f| %>
@@ -55,6 +58,7 @@
     <th><%= sort_link(@q, :given_name, '名') %></th>
     <th><%= sort_link(@q, :email, '電子メール') %></th>
     <th><%= sort_link(@q, :company_company_name, '会社名') %></th>
+    <th>コメント数</th>
     <th>リンク</th>
   </thead>
   <tbody>
@@ -65,6 +69,9 @@
         <td><%= customer.email %></td>
 <!--アソシエーションの親.アソシエーションの子.呼び出したい項目-->
         <td><%= customer.company.company_name %></td>
+<!--customerが持つcommentsをcountで数える-->
+        <td><%= customer.comments.count %></td>
+
         <td><%= link_to '詳細', customer, class: "btn btn-default btn-xs" %></td>
       </tr>
     <% end %>

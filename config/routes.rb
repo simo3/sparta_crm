@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 resources :customers
+#以下で、コメントが入力され、submitされた時のリンク先を設定
+post '/comments' => 'comments#create'
+#以下でコメントが削除され、submitされた時のリンク先が指定
+delete '/comments/:id' => 'comments#destroy', as: :comment
 #deviseにはroot設定がmust
 root 'customers#index'
 

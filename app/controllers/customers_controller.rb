@@ -20,6 +20,8 @@ class CustomersController < ApplicationController
   end
 
   def show
+#comment入力用の受け皿を作る
+    @comment = Comment.new
   end
 
   def create

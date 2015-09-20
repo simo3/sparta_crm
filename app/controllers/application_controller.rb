@@ -12,9 +12,12 @@ class ApplicationController < ActionController::Base
 #「新規登録」画面に適用
     devise_parameter_sanitizer.for(:sign_up) << :family_name
     devise_parameter_sanitizer.for(:sign_up) << :gien_name
+    devise_parameter_sanitizer.for(:sign_up) << :img_url
+
 #devise/registrations/edit.html.erbに項目を増やすため
 #「設定変更」画面に適用
     devise_parameter_sanitizer.for(:account_update) << :family_name
     devise_parameter_sanitizer.for(:account_update) << :gien_name
+    devise_parameter_sanitizer.for(:account_update) << :img_url
   end
 end

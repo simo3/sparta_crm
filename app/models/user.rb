@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  family_name            :string
 #  gien_name              :string
+#  img_url                :string
 #
 # Indexes
 #
@@ -25,6 +26,7 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :comments
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

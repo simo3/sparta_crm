@@ -7,6 +7,49 @@
       <dd><%= @customer.full_name("殿") %></dd>
       <dt>電子メール</dt>
       <dd><%= @customer.email %></dd>
+      <dt>会社名</dt>
+      <dd><%= @customer.company.company_name %></dd>
     </dl>
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-lg-12">
+<% @customer.comments.each do |comment| %>
+<div class="media">
+  <div class="media-left">
+    <%= image_tag comment.user.img_url, width:60 %>
+  </div>
+        <div class="media-body">
+          <p><%= simple_format(comment.body) %></p>
+<!--「simple_format」を入れると、投稿内容に入っている改行も反映された状態で表示されるようになる（Model内では保存されている）-->
+<!--simple_formatを抜くと改行がなくなり、半角スペース区切りで表示される-->
+          <p class="text-muted">
+            投稿日時：<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </p>
+          <p><%= link_to '削除', comment_path(comment), method: :delete, class: 'btn btn-default' %></p>
+        </div>
+      </div>
+<% end %>
+  </div>
+</div>
+
+<hr/>
+<!--以下にコメント入力欄を作成-->
+<div class="row">
+  <div class="col-lg-12">
+  <!--url以下にデータの投げ先を指定
+  commentコントローラーに、actionはcreate-->
+    <%= form_for @comment, url: {controller: :comments, action: :create} do |f| %>
+    <div class="form-group">
+      <%= f.label 'コメント登録' %>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+<!--ユーザーがいじれないようにhidden_fieldで:customer_idも送る-->
+    <%= f.hidden_field :customer_id, value: @customer.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <%= f.submit 'コメント' %>
+    <% end %>
   </div>
 </div>
