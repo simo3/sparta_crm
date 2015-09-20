@@ -6,15 +6,14 @@ gem 'rails', '4.2.1'
 #全環境で実装する機能については以下に記述しておく。
 #ここに記述した後は、Terminalでbundle install実行。
 #
-
+gem 'MySql2'
 #kaminariはページインデントを表示させるgem
 gem 'kaminari'
 #ransackは検索やソートを実装するgem
 gem 'ransack'
 #認証機能を実装
 gem 'devise'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -22,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -57,5 +56,11 @@ group :development, :test do
   gem 'annotate'
 #ターミナルで「rails g annotate:install」する
 #「rake annotate_models」するとmodels/*****.rbの先頭にModelの内容が差し込まれる
+  # Use sqlite3 as the database for Active Record
+gem 'sqlite3'
+end
+
+group :production do
+  gem 'mysql2', '= 0.3.16'
 end
 

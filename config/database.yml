@@ -23,3 +23,12 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+  production:
+  adapter: mysql2
+  encoding: utf8
+  database: sparta_crm
+  port: 3306
+  username: simo
+  password: simosparta
+  host: localhost
